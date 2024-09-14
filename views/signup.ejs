@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.datatables.net/v/bs5/dt-2.0.8/datatables.min.css" rel="stylesheet">
+    <title><%= title %></title>
+</head>
+<body>
+    
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-6 mx-auto mt-4">
+               <div class="shadow-lg">
+                <div class="card-header" style="background-color: #472dbb;">
+                    <h3 class="text-light text-center">Adicionar Novo Usuário</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form action="/signup" method="post" id="add-form" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="nome">Nome</label>
+                            <input type="text" name="nome" class="form-control form-control-lg" placeholder="Digite o Nome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password">Senha</label>
+                            <input type="password" name="password" class="form-control form-control-lg" placeholder="Digite a Senha" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Digite o email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" name="telefone" class="form-control form-control-lg" placeholder="Digite o Telefone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="imagem" class="form-label"> Selecione a Imagem</label>
+                            <input type="file" name="imagem" class="form-control form-control-lg" required>
+                        </div>
+                        <div class="mb-3 d-grid">
+                            <input type="submit" name="submit" value="Adicionar Usuário" class="btn btn-primary btn-lg" style="background-color: #472dbb; border-color: #472dbb;">
+                        </div>
+                    </form>
+                </div>
+               </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
