@@ -9,7 +9,11 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 // Conexão com o banco de dados
-mongoose.connect(process.env.DB_URI);
+mongoose.connect(process.env.DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    ssl: true // Certifique-se de que o SSL está habilitado
+});
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.log("Conectado ao banco de dados!"));
@@ -33,16 +37,14 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.static("uploads"));
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Configuração do mecanismo de modelo para renderizar páginas da web com EJS
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, 'views')); // Certifique-se de que o diretório de views está correto
 
 // Prefixo de rota para as rotas do aplicativo
 app.use("", require("./routes/routes"));
 
-// Inicialização do servidor e escuta de conexões na porta especificada
-app.listen(PORT, () => {
-    console.log(`servidor iniciado em http://localhost:${PORT}`);
-});
+// Exportar a função para o Vercel
+module.exports = app;
